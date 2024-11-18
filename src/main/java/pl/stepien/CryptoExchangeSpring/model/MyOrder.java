@@ -9,9 +9,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class MyOrder {
 
-    private String buyOrSell;
     private double price;
     private double quantity;
 

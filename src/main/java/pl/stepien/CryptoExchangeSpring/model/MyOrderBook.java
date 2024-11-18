@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
 @AllArgsConstructor
-public class OrderBook {
+public class MyOrderBook {
 
-    private final List<Order> orders;
+    private final List<MyOrder> orders;
 }

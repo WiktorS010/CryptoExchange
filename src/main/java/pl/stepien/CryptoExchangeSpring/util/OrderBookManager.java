@@ -1,37 +1,36 @@
 package pl.stepien.CryptoExchangeSpring.util;
 
-import pl.stepien.CryptoExchangeSpring.model.Order;
-import pl.stepien.CryptoExchangeSpring.model.OrderBook;
+
+import pl.stepien.CryptoExchangeSpring.model.MyOrderBook;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderBookManager implements OrderBookHandler {
-    private final OrderBook orderBook;
+    private final MyOrderBook orderBook;
 
-    public OrderBookManager(OrderBook orderBook) {
+    public OrderBookManager(MyOrderBook orderBook) {
         this.orderBook = orderBook;
     }
 
     @Override
-    public void updateOrderBook(OrderBook nweOrderBook) {
+    public void updateOrderBook(MyOrderBook nweOrderBook) {
         orderBook.getOrders().clear();
         orderBook.getOrders().addAll(nweOrderBook.getOrders());
     }
 
     @Override
-    public void onOrderAddad(Order order) {
+    public void onOrderAddad(MyOrder order) {
         orderBook.getOrders().add(order);
 
     }
 
     @Override
-    public void onOrderRemoved(Order order) {
+    public void onOrderRemoved(MyOrder order) {
         orderBook.getOrders().remove(order);
     }
 
     @Override
-    public List<Order> getCurrentOrders() {
+    public List<MyOrder> getCurrentOrders() {
         return new ArrayList<>(orderBook.getOrders());
     }
 }
