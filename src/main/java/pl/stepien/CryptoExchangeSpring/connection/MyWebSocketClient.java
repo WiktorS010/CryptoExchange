@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-import org.springframework.stereotype.Component;
 import pl.stepien.CryptoExchangeSpring.model.JSONMessages;
 import pl.stepien.CryptoExchangeSpring.service.OrderBookService;
 
@@ -16,14 +15,13 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Setter
-@Component
-public class PhemexWebSocketClient extends WebSocketClient {
+public class MyWebSocketClient extends WebSocketClient {
 
     private Runnable onOpenListener;
     private ScheduledExecutorService pingScheduler;
     private OrderBookService orderBookService;
 
-    public PhemexWebSocketClient(URI serverUri, OrderBookService orderBookService) {
+    public MyWebSocketClient(URI serverUri, OrderBookService orderBookService) {
         super(serverUri);
         this.orderBookService = orderBookService;
     }
@@ -64,7 +62,7 @@ public class PhemexWebSocketClient extends WebSocketClient {
     }
 
 
-    public void sendMessageToPhemex(String message) {
+    public void sendMessage(String message) {
         log.info("My message to Phemex " + message);
         this.send(message);
     }

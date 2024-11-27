@@ -1,36 +1,45 @@
 package pl.stepien.CryptoExchangeSpring.util;
 
 
-import pl.stepien.CryptoExchangeSpring.model.MyOrderBook;
+import pl.stepien.CryptoExchangeSpring.model.Order;
+import pl.stepien.CryptoExchangeSpring.model.OrderBook;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderBookManager implements OrderBookHandler {
-    private final MyOrderBook orderBook;
+    private final OrderBook orderBook;
 
-    public OrderBookManager(MyOrderBook orderBook) {
+    public OrderBookManager(OrderBook orderBook) {
         this.orderBook = orderBook;
     }
 
     @Override
-    public void updateOrderBook(MyOrderBook nweOrderBook) {
-        orderBook.getOrders().clear();
-        orderBook.getOrders().addAll(nweOrderBook.getOrders());
-    }
-
-    @Override
-    public void onOrderAddad(MyOrder order) {
-        orderBook.getOrders().add(order);
+    public void updateOrderBook(OrderBook newOrderBook) {
+        orderBook.getAsks().clear();
+        orderBook.getBids().clear();
+        orderBook.setAsks(newOrderBook.getAsks());
+        orderBook.setBids(newOrderBook.getBids());
 
     }
 
     @Override
-    public void onOrderRemoved(MyOrder order) {
-        orderBook.getOrders().remove(order);
+    public void onOrderAddad(Order order, String bidOrAsk) {
+        if (bidOrAsk.equals("ask")) {
+            orderBook.getAsks().put(order.getPrice(), order.getQuantity());
+        } else if (bidOrAsk.equals("bid")){
+            orderBook.getBids().put(order.getPrice(), order.getQuantity());
+        }
+
     }
 
     @Override
-    public List<MyOrder> getCurrentOrders() {
-        return new ArrayList<>(orderBook.getOrders());
+    public void onOrderRemoved(Order order) {
+        //TODO
+    }
+
+    @Override
+    public OrderBook getCurrentOrders() {
+        return orderBook;
     }
 }

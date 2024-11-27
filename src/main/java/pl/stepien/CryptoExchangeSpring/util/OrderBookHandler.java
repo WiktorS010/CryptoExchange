@@ -1,13 +1,13 @@
 package pl.stepien.CryptoExchangeSpring.util;
 
-import pl.stepien.CryptoExchangeSpring.model.MyOrder;
-import pl.stepien.CryptoExchangeSpring.model.MyOrderBook;
+import pl.stepien.CryptoExchangeSpring.model.Order;
+import pl.stepien.CryptoExchangeSpring.model.OrderBook;
 
 import java.util.List;
 
 public interface OrderBookHandler {
-void updateOrderBook(MyOrderBook orderBook);
-void onOrderAddad(MyOrder order);
-void onOrderRemoved(MyOrder order);
-List<MyOrder> getCurrentOrders();
+void updateOrderBook(OrderBook orderBook);
+void onOrderAddad(Order order, String bidOrAsk);
+void onOrderRemoved(Order order);
+OrderBook getCurrentOrders();
 }

@@ -23,4 +23,9 @@ public class JSONMessages {
         return subscribeMessage;
     }
 
+    public static JSONObject createCoinbaseSubscribeMessage(String symbol) {
+        JSONObject subscribeMessage = new JSONObject();
+        return subscribeMessage;
+    }
+
 }

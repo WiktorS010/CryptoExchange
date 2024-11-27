@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.TreeMap;
 
 @Setter
 @Getter
 @AllArgsConstructor
-public class MyOrderBook {
+public class OrderBook {
 
-    private final List<MyOrder> orders;
+    TreeMap<Long, Long> bids = new TreeMap<>();
+    TreeMap<Long, Long> asks = new TreeMap<>();
 }
