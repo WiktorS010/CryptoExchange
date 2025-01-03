@@ -14,15 +14,18 @@ public class CryptoExchangeSpringApplication {
 
     private final ConnectionService connectionService;
     private final URI phemexWebSocketUri;
-//    private final URI bybitWebSocketUri;
+    private final URI bybitWebSocketUri;
+    private final URI binanceWebSocketUri;
 
     public CryptoExchangeSpringApplication(ConnectionService connectionService,
-                                           @Qualifier("phemexWebSocketUri") URI phemexWebSocketUri)
-//                                           @Qualifier("bybitWebsocketUri") URI bybitWebsocketUri)
+                                           @Qualifier("phemexWebSocketUri") URI phemexWebSocketUri,
+                                           @Qualifier("bybitWebSocketUri") URI bybitWebSocketUri,
+                                           @Qualifier("binanceWebSocketUri") URI binanceWebSocketUri)
     {
         this.connectionService = connectionService;
         this.phemexWebSocketUri = phemexWebSocketUri;
-//        this.bybitWebSocketUri = bybitWebsocketUri;
+        this.bybitWebSocketUri = bybitWebSocketUri;
+        this.binanceWebSocketUri = binanceWebSocketUri;
     }
 
     public static void main(String[] args) {
@@ -36,6 +39,9 @@ public class CryptoExchangeSpringApplication {
 
         // Connect and subscribe to Bybit
 //        connectionService.connectAndSubscribe("BTCUSDT", bybitWebSocketUri);
+
+        //Connect and subscribe to Binance
+//        connectionService.connectAndSubscribe("BTCUSDT", binanceWebSocketUri);
     }
 }
 

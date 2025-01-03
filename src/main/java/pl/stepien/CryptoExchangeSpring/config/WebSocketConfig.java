@@ -2,8 +2,7 @@ package pl.stepien.CryptoExchangeSpring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.stepien.CryptoExchangeSpring.connection.MyWebSocketClient;
-import pl.stepien.CryptoExchangeSpring.service.OrderBookService;
+
 
 import java.net.URI;
 
@@ -15,7 +14,12 @@ public class WebSocketConfig {
     }
 
     @Bean
-    public URI bybitWebsocketUri() {
+    public URI bybitWebSocketUri() {
         return URI.create("wss://stream.bybit.com/v5/public/spot");
+    }
+
+    @Bean
+    public URI binanceWebSocketUri() {
+        return URI.create("wss://stream.binance.com:9443/ws");
     }
 }

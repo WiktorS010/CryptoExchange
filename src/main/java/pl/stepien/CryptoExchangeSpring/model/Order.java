@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Order {
 
 
-    private long price;
-    private long quantity;
+    private double price;
+    private double quantity;
 
 }

@@ -16,26 +16,14 @@ public class OrderBookManager implements OrderBookHandler {
 
     @Override
     public void updateOrderBook(OrderBook newOrderBook) {
-        orderBook.getAsks().clear();
-        orderBook.getBids().clear();
-        orderBook.setAsks(newOrderBook.getAsks());
-        orderBook.setBids(newOrderBook.getBids());
-
     }
 
     @Override
     public void onOrderAddad(Order order, String bidOrAsk) {
-        if (bidOrAsk.equals("ask")) {
-            orderBook.getAsks().put(order.getPrice(), order.getQuantity());
-        } else if (bidOrAsk.equals("bid")){
-            orderBook.getBids().put(order.getPrice(), order.getQuantity());
-        }
-
     }
 
     @Override
     public void onOrderRemoved(Order order) {
-        //TODO
     }
 
     @Override

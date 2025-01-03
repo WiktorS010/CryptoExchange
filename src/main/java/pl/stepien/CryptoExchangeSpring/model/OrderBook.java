@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Comparator;
 import java.util.TreeMap;
 
 @Setter
@@ -11,6 +12,6 @@ import java.util.TreeMap;
 @AllArgsConstructor
 public class OrderBook {
 
-    TreeMap<Long, Long> bids = new TreeMap<>();
-    TreeMap<Long, Long> asks = new TreeMap<>();
+   private final TreeMap<Double, Double> bids = new TreeMap<>(Comparator.reverseOrder());
+   private final TreeMap<Double, Double> asks = new TreeMap<>();
 }
